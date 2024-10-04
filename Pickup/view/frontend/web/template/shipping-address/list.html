@@ -1,0 +1,29 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+
+<!-- ko if: (visible)-->
+<div class="field addresses">
+    <div class="control">
+        <div class="shipping-address-items">
+            <!-- ko ifnot: (isAddress)-->
+                <!-- ko foreach: { data: elems, as: 'element' } -->
+                <!-- ko template: element.getTemplate() --><!-- /ko -->
+                <!-- /ko -->
+            <!-- /ko -->
+            <!-- ko if: (isAddress) -->
+            <div class="shipping-address-item selected-item"> 
+                <text args="pickAddress().firstname"></text> <text args="pickAddress().lastname"></text><br> 
+                <text args="_.values(_.compact(pickAddress().street)).join(', ')"></text><br>
+                <text args="pickAddress().city "></text>, <span text="pickAddress().region"></span> <text args="pickAddress().postcode"></text><br>
+                <text args="getCountryName(pickAddress().countryId)"></text><br>
+                <a if="pickAddress().telephone" attr="'href': 'tel:' + pickAddress().telephone" text="pickAddress().telephone"></a>
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+</div>
+<!-- /ko -->

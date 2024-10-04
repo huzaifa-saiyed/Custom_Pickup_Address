@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="kitchen365" translate="label" sortOrder="10">
+            <label>Kitchen 365</label>
+        </tab>
+        <section id="pickup_section" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Pickup Location</label>
+            <tab>kitchen365</tab>
+            <resource>Kitchen365_Pickup::pickup_config</resource>
+            <group id="shipping_method_enable" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Shipping Method Config</label>
+                <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="customer_address_config_group" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Customer Address Config</label>
+                <field id="street_line1" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1">
+                    <label>Street Address</label>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="street_line2" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="1">
+                    <label>Street Address Line 2</label>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="country_id" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1">
+                    <label>Country</label>
+                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                    <frontend_class>countries</frontend_class>
+                    <can_be_empty>1</can_be_empty>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="region_id" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1">
+                    <label>Region/State</label>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="city" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1">
+                    <label>City</label>
+                    <validate>required-entry</validate>
+                </field>
+                <field id="postcode" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1">
+                    <label>ZIP/Postal Code</label>
+                    <validate>required-entry validate-digits</validate>
+                </field>
+                <field id="phone_number" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Phone Number</label>
+                    <validate>required-entry validate-digits validate-mobile-number-digit</validate>
+                </field>
+            </group>
+            <group id="shipping_method_config" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Shipping Method Config</label>
+                <field id="enabled_method" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled Delivery Methods</label>
+                    <source_model>Magento\Shipping\Model\Config\Source\Allmethods</source_model>
+                    <validate>required-entry</validate>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
